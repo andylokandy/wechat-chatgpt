@@ -149,6 +149,7 @@ export class ChatGPTPool {
       } = await conversation.sendMessage(message, {
         conversationId,
         parentMessageId: messageId,
+        promptPrefix: `${process.env.PROMPT as string}. Current date: ${new Date().toISOString()}\n\n`,
       });
       // Update conversation information
       this.setConversation(talkid, newConversationId, newMessageId);
